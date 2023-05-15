@@ -1,0 +1,42 @@
+// import Google font
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+// reset variables
+
+html {
+    box-sizing: border-box;
+}
+
+* {
+    color: inherit;
+    margin: 0;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300 800;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+hr {
+    border: 0;
+    border-top: 1px dashed #efefef
+}
+
+img {
+    max-width: 100%;
+}

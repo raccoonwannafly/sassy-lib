@@ -1,0 +1,112 @@
+@use 'sass:math';
+
+$utilities: (
+    "padding": (
+        "prefix": "p",
+        "position": (
+            "top": "t",
+            "right": "r",
+            "bottom": "b",
+            "left": "l"
+        ),
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8
+        )
+    ),
+    "margin": (
+        "prefix": "m",
+        "position": (
+            "top": "t",
+            "right": "r",
+            "bottom": "b",
+            "left": "l"
+        ),
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8
+        )
+    ),
+    "opacity": (
+        "prefix": "o",
+        "values": (
+            "1": .1,
+            "2": .2,
+            "3": .3,
+            "4": .4,
+            "5": .5,
+            "6": .6,
+            "7": .7,
+            "8": .8,
+            "9": .9,
+            "10": 1,
+        )
+    ),
+    "border-radius": (
+        "prefix": "br",
+        "values": (
+            "default": $base-border-radius,
+            "none": 0,
+            "xs": math.div($base-border-radius, 4),
+            "sm": math.div($base-border-radius, 2),
+            "lg": $base-border-radius * 2,
+            "full": 50%,
+        )
+    ),
+    "display": (
+        "prefix": "d",
+        "values": (
+            "none": none,
+            "block": block,
+            "flex": flex,
+            "inline": inline,
+            "inline-block": inline-block
+        )
+    ),
+    "font-size": (
+        "prefix": "font",
+        "values": (
+            "sm": $font-size-sm,
+            "md": $base-font-size,
+            "lg": $font-size-lg,
+            "xl": $font-size-xl,
+            "xxl": $font-size-xxl,
+        )
+    )
+);
+
+@each $property, $map in $utilities {
+    $prefix: map-get($map, "prefix");
+    $position: map-get($map, "position");
+    $values: map-get($map, "values");
+
+    @if($property == "padding" or $property == "margin") {
+        @each $num, $val in $values {
+            .#{$prefix}-#{$num} {
+                #{$property}: $val;
+            }
+        }
+        @each $pos, $pref in $position {
+            @each $num, $val in $values {
+                    .#{$prefix}#{$pref}-#{$num} {
+                        #{$property}-#{$pos}: $val;
+                    }
+            }
+        }
+    } @else {
+        @each $num, $val in $values {
+            .#{$prefix}-#{$num} {
+                #{$property}: $val;
+            }
+        }
+    }
+
+}

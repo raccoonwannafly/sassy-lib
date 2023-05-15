@@ -1,0 +1,65 @@
+@use 'sass:math';
+
+@mixin btn($bg-color: #e2e2e2) {
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    border: 0;
+    padding: $base-padding $base-padding * 1.5;
+    border-radius: math.div($base-border-radius, 1.5);
+    background-color: $bg-color;
+}
+
+.btn {
+    @include btn;
+
+    &:hover {
+        background-color: black;
+    }
+
+    &:active {
+        background-color: rgb(46, 46, 46);
+    }
+}
+
+
+@each $key, $val in $colors {
+    .btn-#{$key} {
+        @include btn($val);
+
+        &:hover {
+            background-color: lighten($val, 10%);
+        }
+        &:active {
+            background-color: lighten($val, 5%);
+        }
+    }
+
+    .btn-outlined-#{$key} {
+        @include btn(#ffffff);
+        border: $base-border-thickness solid $val;
+
+        &:hover {
+            background-color: $val;
+            color: white;
+        }
+
+        &:active {
+            background-color: lighten($val, 5%);
+        }
+    }
+
+    .btn-complement-#{$key} {
+        @include btn($val);
+        color: white;
+
+        &:hover {
+            color: $val;
+            background-color: light-comp($val);
+        }
+
+        &:active {
+            background-color: lighten(light-comp($val), 5%);
+        }
+    }
+}
