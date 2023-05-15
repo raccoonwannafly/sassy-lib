@@ -9,7 +9,7 @@
 
 
 
-*** Use Gulp to watch recompile SASS to css and debug
+*** Use Gulp to watch recompile SASS to css and debug (gulpfile.js is required)
 
 ```
   "devDependencies": {
@@ -18,3 +18,4 @@
     "sass": "^1.62.1"
   }
 ```
+
