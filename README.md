@@ -10,6 +10,9 @@
 
 
 *** Use Gulp to watch recompile SASS to css and debug (gulpfile.js is required)
+```
+npm i gulp gulp-sass sass gulp-purgecss --save-dev
+```
 
 ```
   "devDependencies": {
